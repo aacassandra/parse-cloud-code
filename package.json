@@ -1,6 +1,6 @@
 {
   "name": "@aacassandra/parse-cloud-code",
-  "version": "1.0.3",
+  "version": "1.0.1",
   "description": "Parse libraries",
   "main": "src/index.js",
   "publishConfig": {
@@ -23,9 +23,6 @@
     "url": "https://github.com/aacassandra/parse-cloud-code/issues"
   },
   "homepage": "https://github.com/aacassandra/parse-cloud-code#readme",
-  "dependencies": {
-    "parse": "^2.11.0"
-  },
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "babel-eslint": "^10.0.3",
