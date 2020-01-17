@@ -45,38 +45,40 @@ module.exports = {
     return object;
   },
   objectConditional: (Parse, query, options) => {
-    Object.keys(options).forEach(key => {
-      if (key === 'equalTo') {
-        query.equalTo(options[key].object, options[key].value);
-      } else if (key === 'equalToPointer') {
-        query.equalTo(
-          options[key].object,
-          new Parse.Object(options[key].class, {
-            id: options[key].value
-          })
-        );
-      } else if (key === 'notEqualTo') {
-        query.notEqualTo(options[key].object, options[key].value);
-      } else if (key === 'notEqualToPointer') {
-        query.notEqualToPointer(
-          options[key].object,
-          new Parse.Object(options[key].class, {
-            id: options[key].value
-          })
-        );
-      } else if (key === 'containedIn') {
-        query.containedIn(options[key].object, options[key].value);
-      } else if (key === 'notContainedIn') {
-        query.notContainedIn(options[key].object, options[key].value);
-      } else if (key === 'greaterThan') {
-        query.greaterThan(options[key].object, options[key].value);
-      } else if (key === 'lessThan') {
-        query.lessThan(options[key].object, options[key].value);
-      } else if (key === 'greaterThanOrEqualTo') {
-        query.greaterThanOrEqualTo(options[key].object, options[key].value);
-      } else if (key === 'lessThanOrEqualTo') {
-        query.lessThanOrEqualTo(options[key].object, options[key].value);
-      }
+    options.forEach(wh => {
+      Object.keys(wh).forEach(key => {
+        if (key === 'equalTo') {
+          query.equalTo(wh.object, wh.equalTo);
+        } else if (key === 'equalToPointer') {
+          query.equalTo(
+            wh.object,
+            new Parse.Object(wh.className, {
+              id: wh.objectId
+            })
+          );
+        } else if (key === 'notEqualTo') {
+          query.notEqualTo(wh.object, wh.notEqualTo);
+        } else if (key === 'notEqualToPointer') {
+          query.notEqualToPointer(
+            wh.object,
+            new Parse.Object(wh.className, {
+              id: wh.objectId
+            })
+          );
+        } else if (key === 'containedIn') {
+          query.containedIn(wh.object, wh.containedIn);
+        } else if (key === 'notContainedIn') {
+          query.notContainedIn(wh.object, wh.notContainedIn);
+        } else if (key === 'greaterThan') {
+          query.greaterThan(wh.object, wh.greaterThan);
+        } else if (key === 'lessThan') {
+          query.lessThan(wh.object, wh.lessThan);
+        } else if (key === 'greaterThanOrEqualTo') {
+          query.greaterThanOrEqualTo(wh.object, wh.greaterThanOrEqualTo);
+        } else if (key === 'lessThanOrEqualTo') {
+          query.lessThanOrEqualTo(wh.object, wh.lessThanOrEqualTo);
+        }
+      });
     });
 
     return query;
